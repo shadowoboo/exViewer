@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh_Tw">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Useless Imgur Viwer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="vier-wrap">
+        <!-- 讀取條 -->
+        <div id="loadingBar" class="hidden"></div>
+
+        <!-- 控制區 -->
+        <div id="ctrlBar">
+            <div id="searchBar" class="mb-20">
+                <label for="pagesLimitInput">
+                    <h3>Load Images</h3>
+                    <input type="text" placeholder="imgur 網址" id="urlInput">
+                    <button id="submitBtn" class="ml-20">Load</button>
+                    <button id="clearUrlBtn" class="ml-20">Clear</button>
+                </label>
+            </div>
+            <div id="zoomBar" class="mb-20">
+                <label for="volume">
+                    <h3>Width</h3>
+                    <input type="range" id="zoomInput" name="zoomInput" min="80" max="4096" value="960" step="80">
+                    <span id="currentWidthValue">800 px</span>
+                </label>
+            </div>
+            <div id="onceLoadPagesLimit" class="mb-20">
+                <label for="pagesLimitInput">
+                    <h3>Lazy Loading</h3>
+                    <input type="checkbox" name="pagesLimitInput" checked id="pagesLimitInput"> 
+                    <span>select to lazy loading</span>
+                    <!-- <input type="number" step="1" min="1" value="9999" placeholder="一次載入張數" id="pagesLimitInput">
+                    <button id="checkPagesLimitBtn" class="ml-20">Limit !</button> -->
+                </label>
+            </div>
+        </div>
+
+        <!-- 圖片顯示 -->
+        <div id="imgsWrap">
+
+        </div>
+
+        <!-- 圖片訊息 FIXME: 先不要-->
+        <div id="imgMsgWrap" class="hidden">
+            <div id="imgMsgTitle">
+                <span>Image Log:</span><button id="cleanImgMsgBtn" class="ml-20">Clear Log</button>
+            </div>
+            <div id="imgMsg"></div>
+        </div>
+
+        <!-- 目錄跳轉 -->
+        <div id="pageIndexWrap" class="hidden">
+            <h3>Page Index</h3>
+            <div id="pageIndexBtns">
+
+            </div>
+        </div>
+
+        <!-- debug 訊息 -->
+        <div id="debugMsgWrap">
+            <div id="debugMsgTitle">
+                <span>Issue Log:</span><button id="cleanDebugMsgBtn" class="ml-20">Clear Log</button>
+            </div>
+            <div id="debugMsg"></div>
+        </div>
+    </div>
+    <script src="./index.js"></script>
+</body>
+
+</html>

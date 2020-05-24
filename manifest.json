@@ -1,0 +1,22 @@
+{
+  "manifest_version": 2,
+  "name": "exViewer",
+  "description": "Imgur and other(?) image Viwer",
+  "version": "1.0",
+  "browser_action": {
+    "default_title": "Imgur and other(?) image Viwer"
+  },
+  "permissions": [
+    "activeTab",
+    "tabs",
+    "https://imgur.com/*"
+  ],
+  "icons": {
+    "16": "GG.png",
+    "48": "GG.png",
+    "128": "GG.png"
+  },
+  "chrome_url_overrides" : {
+    "newtab": "index.html"
+  }
+}
