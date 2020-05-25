@@ -14,20 +14,20 @@
         <div id="loadingBar" class="hidden"></div>
 
         <!-- 控制區 -->
-        <div id="ctrlBar">
+        <div id="ctrlBar" class="">
             <div id="searchBar" class="mb-20">
                 <label for="pagesLimitInput">
                     <h3>Load Images</h3>
                     <input type="text" placeholder="imgur 網址" id="urlInput">
-                    <button id="submitBtn" class="ml-20">Load</button>
-                    <button id="clearUrlBtn" class="ml-20">Clear</button>
+                    <button id="submitBtn" class="ml-20 btns">Load</button>
+                    <button id="clearUrlBtn" class="ml-20 btns">Clear</button>
                 </label>
             </div>
             <div id="zoomBar" class="mb-20">
                 <label for="volume">
                     <h3>Width</h3>
-                    <input type="range" id="zoomInput" name="zoomInput" min="80" max="4096" value="960" step="80">
-                    <span id="currentWidthValue">800 px</span>
+                    <input type="range" id="zoomInput" name="zoomInput" min="480" max="2048" value="960" step="1">
+                    <span id="currentWidthValue">960 px</span>
                 </label>
             </div>
             <div id="onceLoadPagesLimit" class="mb-20">
@@ -49,7 +49,7 @@
         <!-- 圖片訊息 FIXME: 先不要-->
         <div id="imgMsgWrap" class="hidden">
             <div id="imgMsgTitle">
-                <span>Image Log:</span><button id="cleanImgMsgBtn" class="ml-20">Clear Log</button>
+                <span>Image Log:</span><button id="cleanImgMsgBtn" class="ml-20 btns">Clear Log</button>
             </div>
             <div id="imgMsg"></div>
         </div>
@@ -63,9 +63,9 @@
         </div>
 
         <!-- debug 訊息 -->
-        <div id="debugMsgWrap">
+        <div id="debugMsgWrap" class="">
             <div id="debugMsgTitle">
-                <span>Issue Log:</span><button id="cleanDebugMsgBtn" class="ml-20">Clear Log</button>
+                <span>Issue Log:</span><button id="cleanDebugMsgBtn" class="ml-20 btns">Clear Log</button>
             </div>
             <div id="debugMsg"></div>
         </div>

@@ -17,13 +17,18 @@ body {
 #ctrlBar {
     position: fixed;
     top: 40px;
-    right: 20px;
+    right: 0px;
     z-index: 999;
     transition: all 0.3s;
+    background-color: #141518;
+    padding: 24px;
+    border-radius: 4px;
+    border: #f4f4f44b solid 1px;
 }
 
 #ctrlBar:hover {
     opacity: 1;
+    transform: translateX(0);
 }
 
 #imgsWrap {
@@ -58,16 +63,30 @@ body {
     margin-left: 20px;
 }
 
+.btns{
+    padding: 6px;
+    border-radius: 4px;
+    background-color: #141518;
+    border: 1px solid #f4f4f4;
+    color: #f4f4f4;
+    box-shadow: transparent;
+}
+
 #debugMsgWrap {
     position: fixed;
     bottom: 20px;
-    right: 20px;
+    right: 0px;
     z-index: 999;
     transition: all 0.3s;
+    background-color: #141518;
+    padding: 24px;
+    border-radius: 4px;
+    border: #f4f4f44b solid 1px;
 }
 
 #debugMsgWrap:hover {
     opacity: 1;
+    transform: translateX(0);
 }
 
 #debugMsgTitle {
@@ -120,6 +139,10 @@ body {
 
 .hidden {
     display: none;
+}
+
+.hidden-right{
+    transform: translateX( calc(100% - 24px));
 }
 
 .opacity-1 {

@@ -8,7 +8,7 @@ const clearUrlBtn = document.getElementById('clearUrlBtn');
 clearUrlBtn.addEventListener('click', clearUrl);
 
 const zoomInput = document.getElementById('zoomInput');
-zoomInput.addEventListener('change', widthChange);
+zoomInput.addEventListener('input', widthChange);
 
 const pagesLimitInput = document.getElementById('pagesLimitInput');
 
@@ -90,10 +90,11 @@ function onclick() {
     const imgsWrap = document.getElementById('imgsWrap');
     console.log(`urlInput.value`, urlInput.value)
     getImgurPicDatasByUrl(urlInput.value)
-        // .then(imageData =>{
-        //     logImgMsg(imageData);
-        //     return imageData;
-        // })
+        .then(imageData =>{
+            console.log(imageData);
+            document.title = imageData.title ? imageData.title : 'No Title';
+            return imageData;
+        })
         .then(imageData => imageData.album_images.images
             .map(imgInfo => imgInfo.url = `http://i.imgur.com/${imgInfo.hash}${imgInfo.ext}`)
             .map((imgUrl, index) => createTemplateByLoadMode(pagesLimitInput.checked, imgUrl, index))
@@ -111,9 +112,9 @@ function onclick() {
             }
 
             // blur control area
-            ctrlBar.classList.add('opacity-1');
-            debugMsgWrap.classList.add('opacity-1');
-            pageIndexWrap.classList.add('opacity-1');
+            addMultiClass(ctrlBar, 'opacity-1', 'hidden-right');
+            addMultiClass(debugMsgWrap, 'opacity-1', 'hidden-right');
+            addMultiClass(pageIndexWrap, 'opacity-1', 'hidden-right');
             hideLoading();
         })
         .catch(err => {
@@ -124,17 +125,33 @@ function onclick() {
 }
 
 function widthChange(event) {
+    // const initDocumentHeight = document.body.scrollHeight;
+    // const initScrollTop = window.pageYOffset|| document.documentElement.scrollTop || document.body.scrollTop;
+
+    // image resize
     const value = event.target.value;
     console.log('widthChange--value: ', value);
 
     const imgWraps = document.getElementsByClassName('imgWrap');
-    console.log('widthChange--Array.from(imgWrap): ', Array.from(imgWraps));
+    // console.log('widthChange--Array.from(imgWrap): ', Array.from(imgWraps));
     Array.from(imgWraps).forEach(imgWrap => {
         imgWrap.style.width = `${value}px`;
     })
 
     const currentWidthValue = document.getElementById('currentWidthValue');
-    currentWidthValue.innerText = `${value} px`
+    currentWidthValue.innerText = `${value} px`;
+
+    // scroll hight re-calculate
+    // ... TODO:
+    // const finalDocumentHeight = document.body.scrollHeight;
+    // const finalScrollTop = (initScrollTop / initDocumentHeight) * finalDocumentHeight;
+    // document.body.scrollTo(0,finalScrollTop);
+    // console.table([{
+    //     initDocumentHeight: initDocumentHeight,
+    //     initScrollTop: initScrollTop,
+    //     finalDocumentHeight:finalDocumentHeight,
+    //     finalScrollTop: finalScrollTop,
+    // }])
 }
 
 function onEnterViews(entries, observer){
@@ -211,3 +228,11 @@ function hideLoading(){
     return loadingBar.classList.add('hidden');
 }
 
+
+function addMultiClass(htmlElement, ...classNames){
+    return classNames.forEach(className=>htmlElement.classList.add(className));
+}
+
+function removeMultiClass(htmlElement, ...classNames){
+    return classNames.forEach(className=>htmlElement.classList.remove(className));
+}
